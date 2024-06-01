@@ -18,4 +18,6 @@ Example:  <a href="https://github.com/WojciechMarczewski/OLX-Selenium-Tests/blob
 To further enhance the efficiency of the tests, extensions for web elements were used. These extensions encapsulated recurring method calls during testing, promoting cleaner and more readable code.
 
 Example: <a href="https://github.com/WojciechMarczewski/OLX-Selenium-Tests/blob/main/Helpers/WebDriverExtensions.cs">WebDriverExtensions.cs</a>
-
+<br>
+<br>
+## If you have any constructive feedback about my code, feel free to reach me. Thanks!
