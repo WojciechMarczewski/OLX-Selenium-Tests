@@ -1,10 +1,24 @@
 <h1 align="center">
-
   Selenium Tests
 </h1>
-![Selenium](https://img.shields.io/badge/-selenium-%43B02A?style=for-the-badge&logo=selenium&logoColor=white)
+
 <h2 align="center>
   
- Repository contains tests performed on OLX website written during my self-learning process on Selenium framework.
- 
+ ### This repository is a testament to my journey of self-learning, where I have applied the Selenium framework in conjunction with xUnit to perform a series of tests on the OLX website. 
+ ### It serves as a practical demonstration of my acquired skills and understanding of the fundamentals of the automated testing.
 </h2>
+<p align="center">
+  <a href="https://www.selenium.dev/">
+    <img source="https://img.shields.io/badge/-selenium-%43B02A?style=for-the-badge&logo=selenium&logoColor=white" alt="Selenium">
+  </a>
+  <a href="https://xunit.net/">
+    <img source="https://raw.github.com/xunit/media/main/full-logo.png" alt="xUnit">
+  </a>
+  </p>
+## Insights into the Code Structure
+### Page Object Model
+The tests incorporated the **Page Object Model (POM)** pattern, a highly recommended approach for website testing. This design pattern improves test maintenance and code management.
+### Page Component Object Model
+The OLX website presented repeating web elements across various pages. To handle this efficiently and prevent code redundancy, the **Page Component Object Model (PCOM)** was implemented. This crucial feature allowed to prevent code duplication and improved reusability.
+### Extensions
+To further enhance the efficiency of the tests, extensions for web elements were used. These extensions encapsulated recurring method calls during testing, promoting cleaner and more readable code.
