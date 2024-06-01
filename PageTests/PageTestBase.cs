@@ -1,8 +1,7 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
-
-namespace OLX_Selenium_Tests.Tests
+namespace OLX_Selenium_Tests.PageTests
 {
     public abstract class PageTestBase : IDisposable
     {
@@ -20,17 +19,16 @@ namespace OLX_Selenium_Tests.Tests
             driver.Manage().Window.Maximize();
             return driver;
         }
-
-        protected void DriverWaitForPageLoading()
+        protected void DriverWaitForPageLoad()
         {
             var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
             wait.Until(d => d.Url != url);
         }
-
         public void Dispose()
         {
             driver?.Close();
             GC.SuppressFinalize(this);
         }
+
     }
 }

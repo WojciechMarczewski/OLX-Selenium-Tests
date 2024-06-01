@@ -1,7 +1,8 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+using System.Text.RegularExpressions;
 
-namespace Allegro_Selenium_Tests.Helpers
+namespace OLX_Selenium_Tests.Helpers
 {
     public static class WebDriverExtensions
     {
@@ -20,6 +21,22 @@ namespace Allegro_Selenium_Tests.Helpers
             }
             return driver.FindElement(by);
         }
+        public static int ConvertTextToInt(this IWebElement webElement)
+        {
+            var text = webElement.Text;
+            if (text.IndexOf(".") != -1)
+            {
+                text = text.Substring(0, text.IndexOf("."));
+            }
+            if (text.IndexOf(",") != -1)
+            {
+                text = text.Substring(0, text.IndexOf(","));
+            }
+            Regex regex = new Regex("[^0-9]");
+            text = regex.Replace(text, "");
+            return Convert.ToInt32(text);
+        }
+
 
     }
 }

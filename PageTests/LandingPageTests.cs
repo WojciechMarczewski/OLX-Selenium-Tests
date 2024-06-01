@@ -1,37 +1,32 @@
-using Allegro_Selenium_Tests.PageObjects;
+using OLX_Selenium_Tests.PageComponentObjects;
+using OLX_Selenium_Tests.PageObjects;
 using OpenQA.Selenium;
-
-namespace OLX_Selenium_Tests.Tests
+namespace OLX_Selenium_Tests.PageTests
 {
     public class LandingPageTests : PageTestBase
     {
-        public LandingPageTests() : base("https://www.olx.pl")
-        {
-
-        }
+        public LandingPageTests() : base("https://www.olx.pl") { }
         private LandingPage PageInit()
         {
             var driver = DriverInit();
-            LandingPage landingPage = new LandingPage(driver);
+            SearchBoxComponent searchBox = new SearchBoxComponent(driver);
+            LandingPage landingPage = new LandingPage(driver, searchBox);
             landingPage.ClickTrustAccept();
             return landingPage;
         }
-
         [Theory]
         [InlineData("toyota yaris", "/oferty/q-toyota-yaris/")]
         [InlineData("spawacz praca", "/oferty/q-spawacz-praca/")]
         public void SearchBoxQuery_RedirectsToExpectedUrl(string query, string expectedResult)
         {
-
             //Arrange
             var landingPage = PageInit();
             //Act
-            landingPage.PerformSearchBoxQuery(query);
-            DriverWaitForPageLoading();
+            landingPage.SearchBox.PerformSearchBoxQuery(query);
+            DriverWaitForPageLoad();
             //Assert
             Assert.Equal(url + expectedResult, driver?.Url);
         }
-
         [Theory]
         [InlineData("Lubelskie", "Adamów", "/adamow_2217/")]
         [InlineData("Mazowieckie", "Otwock", "/otwock/")]
@@ -39,16 +34,15 @@ namespace OLX_Selenium_Tests.Tests
         {
             //Arrange
             var landingPage = PageInit();
+            var searchBox = landingPage.SearchBox;
             //Act
-            landingPage.ClickLocationInput();
-            landingPage.ClickRegionAndCity(region, city);
-            landingPage.ClickSearch();
-            DriverWaitForPageLoading();
+            searchBox.ClickLocationInput();
+            searchBox.ClickRegionAndCity(region, city);
+            searchBox.ClickSearch();
+            DriverWaitForPageLoad();
             //Assert
             Assert.Equal(url + expectedUrl, driver?.Url);
-
         }
-
         [Theory]
         [InlineData("Mazowieckie", "Wo³omin", "Buty Damskie", "/wolomin/q-Buty-Damskie/")]
         [InlineData("Pomorskie", "Pruszcz Gdañski", "Truskawki", "/pruszcz-gdanski/q-Truskawki/")]
@@ -56,14 +50,14 @@ namespace OLX_Selenium_Tests.Tests
         {
             //Arrange
             var landingPage = PageInit();
+            var searchBox = landingPage.SearchBox;
             //Act
-            landingPage.ClickLocationInput();
-            landingPage.ClickRegionAndCity(region, city);
-            landingPage.PerformSearchBoxQuery(query);
-            DriverWaitForPageLoading();
+            searchBox.ClickLocationInput();
+            searchBox.ClickRegionAndCity(region, city);
+            searchBox.PerformSearchBoxQuery(query);
+            DriverWaitForPageLoad();
             //Assert
             Assert.Equal(url + expectedUrl, driver?.Url);
-
         }
         [Theory]
         [InlineData("cat-4042", "/antyki-i-kolekcje/")]
@@ -74,7 +68,7 @@ namespace OLX_Selenium_Tests.Tests
             var landingPage = PageInit();
             //Act
             landingPage.ClickMainCategory(testID);
-            DriverWaitForPageLoading();
+            DriverWaitForPageLoad();
             //Assert
             Assert.Equal(url + expectedUrl, driver?.Url);
         }
@@ -87,7 +81,7 @@ namespace OLX_Selenium_Tests.Tests
             var landingPage = PageInit();
             //Act
             landingPage.ClickMainCategoryWithSubCategory(categoryTestID, subCategoryName);
-            DriverWaitForPageLoading();
+            DriverWaitForPageLoad();
             //Assert
             Assert.Equal(url + expectedUrl, driver?.Url);
         }
@@ -98,14 +92,14 @@ namespace OLX_Selenium_Tests.Tests
         {
             //Arrange
             var landingPage = PageInit();
+            var searchBox = landingPage.SearchBox;
             //Act
-            landingPage.PerformLocationSearchWithFirstResultClicked(query);
-            landingPage.ClickSearch();
-            DriverWaitForPageLoading();
+            searchBox.PerformLocationSearchWithFirstResultClicked(query);
+            searchBox.ClickSearch();
+            DriverWaitForPageLoad();
             //Assert
             Assert.Equal(url + expectedUrl, driver?.Url);
         }
-
         [Theory]
         [InlineData("css-mf7uyd")]
         public void AdContainerFavoriteClick_PopsExpectedModal(string modalClassName)
@@ -115,10 +109,10 @@ namespace OLX_Selenium_Tests.Tests
             //Act
             landingPage.ClickAdElementFavorite();
             var modal = driver?.FindElement(By.ClassName(modalClassName));
-
             //Assert
             Assert.NotNull(modal);
         }
+
 
     }
 }
