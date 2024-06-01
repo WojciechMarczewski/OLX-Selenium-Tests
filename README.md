@@ -15,6 +15,7 @@
     <img source="https://raw.github.com/xunit/media/main/full-logo.png" alt="xUnit">
   </a>
   </p>
+  
 ## Insights into the Code Structure
 ### Page Object Model
 The tests incorporated the **Page Object Model (POM)** pattern, a highly recommended approach for website testing. This design pattern improves test maintenance and code management.
