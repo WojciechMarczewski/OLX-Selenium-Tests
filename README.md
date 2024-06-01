@@ -20,4 +20,4 @@ To further enhance the efficiency of the tests, extensions for web elements were
 Example: <a href="https://github.com/WojciechMarczewski/OLX-Selenium-Tests/blob/main/Helpers/WebDriverExtensions.cs">WebDriverExtensions.cs</a>
 <br>
 <br>
-## If you have any constructive feedback about my code, feel free to reach me. Thanks!
+## If you have any constructive feedback about the code and it's structure, feel free to reach me. Thanks!
