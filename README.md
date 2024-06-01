@@ -4,20 +4,12 @@
 
 <h2 align="center>
   
-   This repository is a testament to my journey of self-learning, where I have applied the Selenium framework in conjunction with xUnit to perform a series of tests on the OLX website. 
+  This repository is a testament to my journey of self-learning, where I have applied the Selenium framework in conjunction with xUnit to perform a series of tests on the OLX website. 
    
   It serves as a practical demonstration of my acquired skills and understanding of the fundamentals of the automated testing.
   
 </h2>
 
-<p align="center">
-  <a href="https://www.selenium.dev/">
-    <img source="https://img.shields.io/badge/-selenium-%43B02A?style=for-the-badge&logo=selenium&logoColor=white" alt="Selenium">
-  </a>
-  <a href="https://xunit.net/">
-    <img source="https://raw.github.com/xunit/media/main/full-logo.png" alt="xUnit">
-  </a>
-  </p>
 
 ## Insights into the Code Structure
 ### Page Object Model
