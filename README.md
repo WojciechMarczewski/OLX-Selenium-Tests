@@ -2,6 +2,7 @@
 <h1 align="center">
   Selenium Tests
 </h1>
+
 <h2 align="center>
   
   This repository is a testament to my journey of self-learning, where I have applied the Selenium framework in conjunction with xUnit to perform a series of tests on the OLX website. 
