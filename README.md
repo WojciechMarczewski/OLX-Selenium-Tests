@@ -1,4 +1,4 @@
-<h1 align="center"><img src="https://img.shields.io/badge/-selenium-%43B02A?style=for-the-badge&logo=selenium&logoColor=white" > Tests with  <img src="https://xunit.net/images/full-logo.svg" width=130></h1>
+<h1 align="center"><a href="https://www.selenium.dev/"><img src="https://img.shields.io/badge/-selenium-%43B02A?style=for-the-badge&logo=selenium&logoColor=white" ></a> Tests with  <a href="https://xunit.net/"><img src="https://xunit.net/images/full-logo.svg" width=130></a></h1>
 
 ## This repository is a testament to my journey of self-learning, where I have applied the Selenium framework in conjunction with xUnit to perform a series of tests on the OLX website. 
 ### It serves as a practical demonstration of my acquired skills and understanding of the fundamentals of the automated testing.
