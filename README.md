@@ -22,11 +22,12 @@ Example: <a href="https://github.com/WojciechMarczewski/OLX-Selenium-Tests/blob/
 ### Data Driven Tests
 Tests are powered by a data source, which can either come directly from a simple InlineData method attribute or from Excel files containing prepared data. This approach allows for the creation of more flexible and scalable tests that can be easily adapted to various data sets.
 
-
+Example: <a href="https://github.com/WojciechMarczewski/OLX-Selenium-Tests/blob/main/PageTests/LoginPageTests.cs">LoginPageTests.cs</a>
 ### Abstraction
 Code redundancy was reduced through the use of abstract classes that implement recurring methods found in many similar objects. This approach enhances code readability, simplifies maintenance, and boosts the efficiency of test creation.
 
+Example: <a href="https://github.com/WojciechMarczewski/OLX-Selenium-Tests/blob/main/PageTests/PageTestBase.cs">PageTestBase.cs</a>
+<br>
+<br>
 
-<br>
-<br>
 ## If you have any constructive feedback about the code and it's structure, feel free to reach me. Thanks!
