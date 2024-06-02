@@ -18,6 +18,15 @@ Example:  <a href="https://github.com/WojciechMarczewski/OLX-Selenium-Tests/blob
 To further enhance the efficiency of the tests, extensions for web elements were used. These extensions encapsulated recurring method calls during testing, promoting cleaner and more readable code.
 
 Example: <a href="https://github.com/WojciechMarczewski/OLX-Selenium-Tests/blob/main/Helpers/WebDriverExtensions.cs">WebDriverExtensions.cs</a>
+
+### Data Driven Tests
+Tests are powered by a data source, which can either come directly from a simple InlineData method attribute or from Excel files containing prepared data. This approach allows for the creation of more flexible and scalable tests that can be easily adapted to various data sets.
+
+
+### Abstraction
+Code redundancy was reduced through the use of abstract classes that implement recurring methods found in many similar objects. This approach enhances code readability, simplifies maintenance, and boosts the efficiency of test creation.
+
+
 <br>
 <br>
 ## If you have any constructive feedback about the code and it's structure, feel free to reach me. Thanks!
