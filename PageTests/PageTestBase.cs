@@ -1,5 +1,5 @@
-﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
+﻿using OLX_Selenium_Tests.Helpers;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 namespace OLX_Selenium_Tests.PageTests
 {
@@ -13,7 +13,7 @@ namespace OLX_Selenium_Tests.PageTests
         protected readonly string url;
         protected IWebDriver DriverInit()
         {
-            driver = new ChromeDriver();
+            driver = WebDriverFactory.Init(WebDriverType.CHROME);
             driver.Navigate().GoToUrl(url);
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             driver.Manage().Window.Maximize();
