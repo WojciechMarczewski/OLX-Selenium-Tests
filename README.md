@@ -1,8 +1,12 @@
-<h1 align="center"> Selenium Tests with xUnit</h1>
+<h1 align="center"><a href="https://www.selenium.dev/"><img src="https://img.shields.io/badge/-selenium-%43B02A?style=for-the-badge&logo=selenium&logoColor=white" ></a> Tests with  <a href="https://xunit.net/"><img src="https://xunit.net/images/full-logo.svg" width=130></a></h1>
 
 ## This repository is a testament to my journey of self-learning, where I have applied the Selenium framework in conjunction with xUnit to perform a series of tests on the OLX website. 
 ### It serves as a practical demonstration of my acquired skills and understanding of the fundamentals of the automated testing.
 
+<p align="center">
+  
+
+</p>
 
 ## Insights into the Code Structure
 ### Page Object Model
@@ -22,11 +26,12 @@ Example: <a href="https://github.com/WojciechMarczewski/OLX-Selenium-Tests/blob/
 ### Data Driven Tests
 Tests are powered by a data source, which can either come directly from a simple InlineData method attribute or from Excel files containing prepared data. This approach allows for the creation of more flexible and scalable tests that can be easily adapted to various data sets.
 
-
+Example: <a href="https://github.com/WojciechMarczewski/OLX-Selenium-Tests/blob/main/PageTests/LoginPageTests.cs">LoginPageTests.cs</a>
 ### Abstraction
 Code redundancy was reduced through the use of abstract classes that implement recurring methods found in many similar objects. This approach enhances code readability, simplifies maintenance, and boosts the efficiency of test creation.
 
+Example: <a href="https://github.com/WojciechMarczewski/OLX-Selenium-Tests/blob/main/PageTests/PageTestBase.cs">PageTestBase.cs</a>
+<br>
+<br>
 
-<br>
-<br>
 ## If you have any constructive feedback about the code and it's structure, feel free to reach me. Thanks!
