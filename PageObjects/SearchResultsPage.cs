@@ -11,27 +11,21 @@ namespace OLX_Selenium_Tests.PageObjects
             SearchBox = searchBoxComponent;
         }
         public SearchBoxComponent SearchBox;
-        private IWebElement priceRangeFromInput => driver.FindElement(By.Name("range-from-input"));
-        private IWebElement priceRangeToInput => driver.FindElement(By.Name("range-to-input"));
-        private IWebElement advertListContainer => driver.FindElement(By.ClassName("css-j0t2x2"));
-        private ReadOnlyCollection<IWebElement> advertList => advertListContainer.FindElements(By.XPath("//*[@data-testid='l-card']"));
-        private ReadOnlyCollection<IWebElement> advertPriceList => advertListContainer.FindElements(By.XPath("//*[@data-testid='ad-price']"));
+        public IWebElement PriceRangeFromInput => driver.FindElement(By.Name("range-from-input"));
+        public IWebElement PriceRangeToInput => driver.FindElement(By.Name("range-to-input"));
+        public IWebElement AdvertListContainer => driver.FindElement(By.ClassName("css-j0t2x2"));
+        public ReadOnlyCollection<IWebElement> AdvertList => AdvertListContainer.FindElements(By.XPath("//*[@data-testid='l-card']"));
+        public ReadOnlyCollection<IWebElement> AdvertPriceList => AdvertListContainer.FindElements(By.XPath("//*[@data-testid='ad-price']"));
 
-        public void SetPriceRangeFrom(string price)
+        public void Set_PriceRange_From(string price)
         {
-            priceRangeFromInput.EnterText(price);
-            priceRangeFromInput.SendKeys(Keys.Enter);
+            PriceRangeFromInput.EnterText(price);
+            PriceRangeFromInput.SendKeys(Keys.Enter);
 
         }
-        public void SetPriceRangeTo(string price)
-        {
-            priceRangeToInput.EnterText(price);
+        public void Set_PriceRange_To(string price) => PriceRangeToInput.EnterText(price);
 
-        }
-        public List<int> GetAdvertPriceList()
-        {
+        public List<int> Get_AdvertPriceList() => AdvertPriceList.Select(x => x.ConvertTextToInt()).ToList();
 
-            return advertPriceList.Select(x => x.ConvertTextToInt()).ToList();
-        }
     }
 }

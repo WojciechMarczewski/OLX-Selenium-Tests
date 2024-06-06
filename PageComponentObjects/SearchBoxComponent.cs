@@ -6,70 +6,47 @@ namespace OLX_Selenium_Tests.PageComponentObjects
     public class SearchBoxComponent : BaseComponent
     {
         public SearchBoxComponent(IWebDriver webDriver) : base(webDriver) { }
-        /// <summary>
-        /// Property represents search box used to search for products and service on the site.
-        /// </summary>
-        private IWebElement userSearchInput => driver.FindElement(By.Id("search"));
-        /// <summary>
-        /// Property represents button which is used to submit entered text in the <see cref="userSearchInput"/>.
-        /// </summary>
-        private IWebElement userSearchButton => driver.FindElement(By.Name("searchBtn"));
-        /// <summary>
-        /// Property represents container of clickable elements in dropdown list triggered to open when <see cref="locationSearchInput"/> is clicked focused (clicked).
-        /// </summary>
-        private IWebElement locationRegionContainer => driver.FindElement(By.ClassName("css-1amhcb2"));
-        /// <summary>
-        /// Property represents input box used to narrow search results by location.
-        /// </summary>
-        private IWebElement locationSearchInput => driver.FindElement(By.Id("location-input"));
-        /// <summary>
-        /// Property represents every element of <see cref="locationSearchInput"/> list.
-        /// </summary>
-        private ReadOnlyCollection<IWebElement> regionListElements => locationRegionContainer.FindElements(By.TagName("li"));
-        /// <summary>
-        /// Property represents each city in selected region in the <see cref="regionListElements"/>.
-        /// </summary>
-        private ReadOnlyCollection<IWebElement> regionCityListElements => locationRegionContainer.FindElements(By.ClassName("css-11ogzbo"));
-        /// <summary>
-        /// Property represents container with suggested locations that are displayed when user types any keyword in <see cref="locationSearchInput"/>
-        /// </summary>
-        private IWebElement locationSuggestionContainer => driver.FindElement(By.ClassName("css-yz55v6"));
-        /// <summary>
-        /// Property represents every element in <see cref="locationSuggestionContainer"/>.
-        /// </summary>
-        private ReadOnlyCollection<IWebElement> locationSuggestionElements => locationSuggestionContainer.FindElements(By.XPath("//*[@data-testid='suggestion-item']"));
-        public void ClickSearch()
+
+        public IWebElement UserSearchInput => driver.FindElement(By.Id("search"));
+
+        public IWebElement UserSearchButton => driver.FindElement(By.Name("searchBtn"));
+
+        public IWebElement LocationRegionContainer => driver.FindElement(By.ClassName("css-1amhcb2"));
+
+        public IWebElement LocationSearchInput => driver.FindElement(By.Id("location-input"));
+
+        public ReadOnlyCollection<IWebElement> RegionListElements => LocationRegionContainer.FindElements(By.TagName("li"));
+
+        public ReadOnlyCollection<IWebElement> RegionCityListElements => LocationRegionContainer.FindElements(By.ClassName("css-11ogzbo"));
+
+        public IWebElement LocationSuggestionContainer => driver.FindElement(By.ClassName("css-yz55v6"));
+
+        public ReadOnlyCollection<IWebElement> LocationSuggestionElements => LocationSuggestionContainer.FindElements(By.XPath("//*[@data-testid='suggestion-item']"));
+
+        public void EnterQueryText_And_Click_SearchButton(string query)
         {
-            userSearchButton.Click();
+            UserSearchInput.EnterText(query);
+            UserSearchButton.Click();
         }
-        public void PerformSearchBoxQuery(string query)
+        public void Click_LocationInput() => LocationSearchInput.Click();
+
+        public void Perform_LocationSearch_And_Click_FirstResult(string query)
         {
-            userSearchInput.EnterText(query);
-            userSearchButton.Click();
+            Click_LocationInput();
+            LocationSearchInput.EnterText(query);
+            LocationSuggestionElements[0].Click();
         }
-        public void ClickLocationInput()
+        private void Click_RegionItem(string region)
         {
-            locationSearchInput.Click();
+            Click_LocationInput();
+            RegionListElements.First(x => x.Text == region).Click();
         }
-        public void PerformLocationSearchWithFirstResultClicked(string query)
+        public void Click_Region_Then_City(string region, string city)
         {
-            ClickLocationInput();
-            locationSearchInput.EnterText(query);
-            locationSuggestionElements[0].Click();
+            Click_RegionItem(region);
+            Click_CityItem(city);
         }
-        private void ClickRegionItem(string region)
-        {
-            ClickLocationInput();
-            regionListElements.First(x => x.Text == region).Click();
-        }
-        public void ClickRegionAndCity(string region, string city)
-        {
-            ClickRegionItem(region);
-            ClickCityItem(city);
-        }
-        private void ClickCityItem(string city)
-        {
-            regionCityListElements.First(x => x.Text == city).Click();
-        }
+        private void Click_CityItem(string city) => RegionCityListElements.First(x => x.Text == city).Click();
+
     }
 }

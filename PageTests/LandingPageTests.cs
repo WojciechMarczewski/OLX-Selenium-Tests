@@ -11,7 +11,7 @@ namespace OLX_Selenium_Tests.PageTests
             var driver = DriverInit();
             SearchBoxComponent searchBox = new SearchBoxComponent(driver);
             LandingPage landingPage = new LandingPage(driver, searchBox);
-            landingPage.ClickTrustAccept();
+            landingPage.Click_TrustAccept();
             return landingPage;
         }
         [Theory]
@@ -22,8 +22,8 @@ namespace OLX_Selenium_Tests.PageTests
             //Arrange
             var landingPage = PageInit();
             //Act
-            landingPage.SearchBox.PerformSearchBoxQuery(query);
-            DriverWaitForPageLoad();
+            landingPage.SearchBox.EnterQueryText_And_Click_SearchButton(query);
+            DriverWaitForRedirection();
             //Assert
             Assert.Equal(url + expectedResult, driver?.Url);
         }
@@ -36,10 +36,10 @@ namespace OLX_Selenium_Tests.PageTests
             var landingPage = PageInit();
             var searchBox = landingPage.SearchBox;
             //Act
-            searchBox.ClickLocationInput();
-            searchBox.ClickRegionAndCity(region, city);
-            searchBox.ClickSearch();
-            DriverWaitForPageLoad();
+            searchBox.Click_LocationInput();
+            searchBox.Click_Region_Then_City(region, city);
+            searchBox.UserSearchButton.Click();
+            DriverWaitForRedirection();
             //Assert
             Assert.Equal(url + expectedUrl, driver?.Url);
         }
@@ -52,10 +52,10 @@ namespace OLX_Selenium_Tests.PageTests
             var landingPage = PageInit();
             var searchBox = landingPage.SearchBox;
             //Act
-            searchBox.ClickLocationInput();
-            searchBox.ClickRegionAndCity(region, city);
-            searchBox.PerformSearchBoxQuery(query);
-            DriverWaitForPageLoad();
+            searchBox.Click_LocationInput();
+            searchBox.Click_Region_Then_City(region, city);
+            searchBox.EnterQueryText_And_Click_SearchButton(query);
+            DriverWaitForRedirection();
             //Assert
             Assert.Equal(url + expectedUrl, driver?.Url);
         }
@@ -67,8 +67,8 @@ namespace OLX_Selenium_Tests.PageTests
             //Arrange
             var landingPage = PageInit();
             //Act
-            landingPage.ClickMainCategory(testID);
-            DriverWaitForPageLoad();
+            landingPage.Click_MainCategory(testID);
+            DriverWaitForRedirection();
             //Assert
             Assert.Equal(url + expectedUrl, driver?.Url);
         }
@@ -80,8 +80,8 @@ namespace OLX_Selenium_Tests.PageTests
             //Arrange 
             var landingPage = PageInit();
             //Act
-            landingPage.ClickMainCategoryWithSubCategory(categoryTestID, subCategoryName);
-            DriverWaitForPageLoad();
+            landingPage.Click_MainCategory_Then_SubCategory(categoryTestID, subCategoryName);
+            DriverWaitForRedirection();
             //Assert
             Assert.Equal(url + expectedUrl, driver?.Url);
         }
@@ -94,9 +94,9 @@ namespace OLX_Selenium_Tests.PageTests
             var landingPage = PageInit();
             var searchBox = landingPage.SearchBox;
             //Act
-            searchBox.PerformLocationSearchWithFirstResultClicked(query);
-            searchBox.ClickSearch();
-            DriverWaitForPageLoad();
+            searchBox.Perform_LocationSearch_And_Click_FirstResult(query);
+            searchBox.UserSearchButton.Click();
+            DriverWaitForRedirection();
             //Assert
             Assert.Equal(url + expectedUrl, driver?.Url);
         }
@@ -107,7 +107,7 @@ namespace OLX_Selenium_Tests.PageTests
             //Arrange 
             var landingPage = PageInit();
             //Act
-            landingPage.ClickAdElementFavorite();
+            landingPage.ClickFirst_AdvertAddToFavorite();
             var modal = driver?.FindElement(By.ClassName(modalClassName));
             //Assert
             Assert.NotNull(modal);

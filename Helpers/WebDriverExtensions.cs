@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+using System.Collections.ObjectModel;
 using System.Text.RegularExpressions;
 
 namespace OLX_Selenium_Tests.Helpers
@@ -20,6 +21,33 @@ namespace OLX_Selenium_Tests.Helpers
                 return wait.Until(drv => drv.FindElement(by));
             }
             return driver.FindElement(by);
+        }
+        public static IWebElement FindElementByDataTestID(this IWebDriver webDriver, string testID)
+        {
+            return webDriver.FindElement(By.XPath($"//*[@data-testid='{testID}']"));
+        }
+        public static IWebElement FindElementByDataTestID(this IWebElement webElement, string testID)
+        {
+            return webElement.FindElement(By.XPath($"//*[@data-testid='{testID}']"));
+        }
+        public static ReadOnlyCollection<IWebElement> FindElementsByDataTestID(this IWebDriver webDriver, string testID)
+        {
+            return webDriver.FindElements(By.XPath($"//*[@data-testid='{testID}']"));
+        }
+        public static ReadOnlyCollection<IWebElement> FindElementsByDataTestID(this IWebElement webElement, string testID)
+        {
+            return webElement.FindElements(By.XPath($"//*[@data-testid='{testID}']"));
+        }
+        public static string GetElementDetails(this IWebElement element)
+        {
+            try
+            {
+                return $"Tag: {element.TagName},\n Text: {element.Text},\n Class: {element.GetAttribute("class")}";
+            }
+            catch (Exception ex)
+            {
+                return $"Element not found. Exception: {ex.Message}";
+            }
         }
         public static int ConvertTextToInt(this IWebElement webElement)
         {

@@ -8,13 +8,10 @@ namespace OLX_Selenium_Tests.PageObjects
         {
             this.driver = webDriver;
         }
-        public void ClickTrustAccept()
+        public void Click_TrustAccept()
         {
-            oneTrustAcceptButton.Click();
+            OneTrustAcceptButton.Click();
         }
-        /// <summary>
-        /// Property represents accept button which appears along with cookies information every time when there are no site cookies saved in the browser.
-        /// </summary>
-        private IWebElement oneTrustAcceptButton => driver.FindElement(By.Id("onetrust-accept-btn-handler"));
+        public IWebElement OneTrustAcceptButton => driver.FindElement(By.Id("onetrust-accept-btn-handler"));
     }
 }

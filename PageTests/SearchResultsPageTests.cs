@@ -13,7 +13,7 @@ namespace OLX_Selenium_Tests.PageTests
             var driver = DriverInit();
             var searchBoxComponent = new SearchBoxComponent(driver);
             SearchResultsPage page = new SearchResultsPage(driver, searchBoxComponent);
-            page.ClickTrustAccept();
+            page.Click_TrustAccept();
             return page;
         }
 
@@ -27,9 +27,9 @@ namespace OLX_Selenium_Tests.PageTests
             //Arrange
             var resultsPage = PageInit();
             //Act 
-            resultsPage.SetPriceRangeFrom(priceFrom);
-            DriverWaitForPageLoad();
-            var priceList = resultsPage.GetAdvertPriceList();
+            resultsPage.Set_PriceRange_From(priceFrom);
+            DriverWaitForRedirection();
+            var priceList = resultsPage.Get_AdvertPriceList();
             List<int> outOfScopePrice = new List<int>();
             foreach (var price in priceList)
             {
@@ -52,8 +52,8 @@ namespace OLX_Selenium_Tests.PageTests
             //Arrange
             var resultsPage = PageInit();
             //Act
-            resultsPage.SetPriceRangeFrom(price);
-            DriverWaitForPageLoad();
+            resultsPage.Set_PriceRange_From(price);
+            DriverWaitForRedirection();
             //Assert
             Assert.Equal(url + "/", driver?.Url);
         }
@@ -69,8 +69,8 @@ namespace OLX_Selenium_Tests.PageTests
             //Arrange
             var resultsPage = PageInit();
             //Act
-            resultsPage.SearchBox.PerformSearchBoxQuery(query);
-            DriverWaitForPageLoad();
+            resultsPage.SearchBox.EnterQueryText_And_Click_SearchButton(query);
+            DriverWaitForRedirection();
             //Assert
             Assert.Equal(baseUrl + expectedResult, driver?.Url);
         }
@@ -84,10 +84,10 @@ namespace OLX_Selenium_Tests.PageTests
             var landingPage = PageInit();
             var searchBox = landingPage.SearchBox;
             //Act
-            searchBox.ClickLocationInput();
-            searchBox.ClickRegionAndCity(region, city);
-            searchBox.ClickSearch();
-            DriverWaitForPageLoad();
+            searchBox.Click_LocationInput();
+            searchBox.Click_Region_Then_City(region, city);
+            searchBox.UserSearchButton.Click();
+            DriverWaitForRedirection();
             //Assert
             Assert.Equal(baseUrl + expectedUrl, driver?.Url);
 
@@ -102,10 +102,10 @@ namespace OLX_Selenium_Tests.PageTests
             var landingPage = PageInit();
             var searchBox = landingPage.SearchBox;
             //Act
-            searchBox.ClickLocationInput();
-            searchBox.ClickRegionAndCity(region, city);
-            searchBox.PerformSearchBoxQuery(query);
-            DriverWaitForPageLoad();
+            searchBox.Click_LocationInput();
+            searchBox.Click_Region_Then_City(region, city);
+            searchBox.EnterQueryText_And_Click_SearchButton(query);
+            DriverWaitForRedirection();
             //Assert
             Assert.Equal(baseUrl + expectedUrl, driver?.Url);
 
