@@ -33,7 +33,7 @@ Code redundancy was reduced through the use of abstract classes that implement r
 Example: <a href="https://github.com/WojciechMarczewski/OLX-Selenium-Tests/blob/main/PageTests/PageTestBase.cs">PageTestBase.cs</a>
 
 ### On Test Failure Screenshots
-Test logic inside test methods is wrapped by another method implemented in PageTestBase.cs - UITest(), which catches test failures and saves captured screenshots in the app directory.
+Test logic inside test methods is wrapped by another method implemented in PageTestBase.cs - <a href="https://github.com/WojciechMarczewski/OLX-Selenium-Tests/blob/b3d08487320996b7f185cc5a0ab1bb8bb6b5d73f/PageTests/PageTestBase.cs#L51">UITest<a/>, which catches test failures and saves captured screenshots in the app directory.
 
 <br>
 <br>
