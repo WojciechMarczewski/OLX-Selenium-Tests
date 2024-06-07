@@ -70,7 +70,7 @@ Test logic inside test methods is wrapped by another method implemented in PageT
         <td>Given valid user email credentials, when the form is submitted without a password, then the login button should be disabled</td>
         <td>1. Navigate to Login Page<br> 2. Enter User Email credentials <br> 3. Click Login Button</td>
         <td>Button is disabled</td>
-        <td>Login_With_Only_Email_Should_Fail</td>
+        <td>Login_With_Only_Email_<br>Should_Fail</td>
       </tr>
       <tr>
         <td>Login Form</td>
@@ -78,7 +78,7 @@ Test logic inside test methods is wrapped by another method implemented in PageT
         <td>Given invalid user email credentials and password, <br>When user attempts to sign in, <br>Then the user should not be able to sign in and an error message should be displayed</td>
         <td>1. Navigate to Login Page<br> 2. Enter invalid User Email credentials and password<br> 3. Click Login Button</td>
         <td>Error message indicating invalid email is displayed</td>
-        <td>Login_With_Invalid_<br>Credentials_Should_Fail</td>
+        <td>Login_With_Invalid_Credentials_<br>Should_Fail</td>
       </tr>
       <tr>
         <td>Login Form</td>
@@ -142,7 +142,7 @@ Test logic inside test methods is wrapped by another method implemented in PageT
     <td>Given the user has not entered any credentials,<br> When user attempts to register,<br> Then the user should not be able to do it and appropriate error message should be displayed</td>
     <td>1. Navigate to Register Page <br>2. Click on a register button</td>
     <td>Error message indicating invalid email and password is displayed</td>
-    <td>Register_With_Empty_<br>Credentials_Should_Fail</td>
+    <td>Register_With_Empty_Credentials_<br>Should_Fail</td>
 </tr>
 <tr>
     <td>Register Form</td>
@@ -150,7 +150,7 @@ Test logic inside test methods is wrapped by another method implemented in PageT
     <td>Given a valid user email credentials,<br> When user submits the form,<br> Then the user should not be able to register and appropriate error message should be displayed</td>
     <td>1. Navigate to Register  Page <br>2. Enter User Email credentials <br>3. Click Register button</td>
     <td>Appropriate error message for password input appears</td>
-    <td>Register_With_Only_<br>Valid_Email_Should_Fail</td>
+    <td>Register_With_Only_Valid_Email_<br>Should_Fail</td>
 </tr>
 <tr>
     <td>Register Form</td>
@@ -158,7 +158,7 @@ Test logic inside test methods is wrapped by another method implemented in PageT
     <td>Given invalid user email credentials and password,<br> When user attempts to register,<br> Then the user should not be able to do it and an error message should be displayed</td>
     <td>1. Navigate to Register Page <br>2. Enter invalid User Email credentials and password  <br>3. Click Register Button</td>
     <td>Error message indicating invalid email is displayed</td>
-    <td>Register_With_Invalid_<br>Credentials_Should_Fail</td>
+    <td>Register_With_Invalid_Credentials_<br>Should_Fail</td>
 </tr>
 <tr>
     <td>Register Form</td>
@@ -166,7 +166,7 @@ Test logic inside test methods is wrapped by another method implemented in PageT
     <td>Given valid user email credentials and password,<br> When user attempts to register,<br> Then the user is signed-in and redirected to the main page</td>
     <td>1. Navigate to Register Page <br>2. Enter valid User Email credentials and password <br>3. Click on a Register Button</td>
     <td>User is redirected to expected URL with already logged in account</td>
-    <td>Register_With_Valid_<br>Credentials_Redirects_To_Expected_Url</td>
+    <td>Register_With_Valid_Credentials_<br>Redirects_To_Expected_Url</td>
 </tr>
 <tr>
     <td>Register Form</td>
