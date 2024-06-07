@@ -38,30 +38,163 @@ Test logic inside test methods is wrapped by another method implemented in PageT
 <br>
 <br>
 
-## Test Cases
+<h2 align="center">Test Cases</h2>  
+<table >
+    <tr>
+      <th>Features</th>
+      <th>Test Case ID</th>
+      <th>Test Description</th>
+      <th>Test Steps</th>
+      <th>Expected Results</th>
+      <th>Test Case Method Coverage</th>
+    </tr>
+  <tr>
+    <td>Login Form</td>
+    <td>LOG-1</td>
+    <td>Given the application is running,<br> When the login form is visible,<br> Then all elements of the login form should be displayed</td>
+    <td>1. Navigate to Login Page <br>2. Verify that all login form elements are visible</td>
+    <td> <b>Login Form and it's content are visible:</b> <br> <b>Fields</b>: <sub><br>1. UserEmail input<br> 2.Password Input</sub><br> <b>Buttons</b>:<sub><br> 1. Login Button<br> 2. Sign in with Facebook <br> 3. Sign in with Apple account <br> 4. Sign in with Google account <br> 5. Navigation sign up button <br> 6. Toggle password visibility button</sub><br> <b>Links</b>:<sub><br> 1. Forgot Password</td>
+  <td>LoginForm_WebElements_<br>AreVisible</td>
+    </tr>
+     <tr>
+       <td>Login Form</td>
+       <td>LOG-2</td>
+       <td>Given the user has not entered any credentials,<br> When the user attempts to sign in,<br> Then the user should not be able to sign in and an appropriate error message should be displayed</td>
+       <td>1. Navigate to Login Page <br>2. Click on a Login Button without filled input fields</td>
+       <td>Error message indicating invalid email and password is displayed</td>
+       <td>Login_With_Empty_<br>Credentials_Should_Fail</td>
+     </tr> 
+      <tr>
+        <td>Login Form</td>
+        <td>LOG-3</td>
+        <td>Given valid user email credentials, when the form is submitted without a password, then the login button should be disabled</td>
+        <td>1. Navigate to Login Page<br> 2. Enter User Email credentials <br> 3. Click Login Button</td>
+        <td>Button is disabled</td>
+        <td>Login_With_Only_Email_Should_Fail</td>
+      </tr>
+      <tr>
+        <td>Login Form</td>
+        <td>LOG-4</td>
+        <td>Given invalid user email credentials and password, <br>When user attempts to sign in, <br>Then the user should not be able to sign in and an error message should be displayed</td>
+        <td>1. Navigate to Login Page<br> 2. Enter invalid User Email credentials and password<br> 3. Click Login Button</td>
+        <td>Error message indicating invalid email is displayed</td>
+        <td>Login_With_Invalid_<br>Credentials_Should_Fail</td>
+      </tr>
+      <tr>
+        <td>Login Form</td>
+        <td>LOG-5</td>
+        <td>Given valid user email credentials and password,<br> When user attempts to sign in,<br> Then the user should be able to sign in and be redirected to expected url</td>
+        <td> 1. Navigate to Login Page <br> 2. Enter valid User Email and Password <br> 3. Click Login Button</td>
+         <td> User is signed in and redirected to expected URL</td>
+          <td>Login_With_Valid_Credentials_<br>Redirects_To_Expected_Url</td>
+      </tr>
+          <tr>
+            <td>Login Form</td>
+            <td>LOG-6</td>
+            <td>Given appropriate third-party app login button,<br> When user clicks on the button,<br> Then the user is redirected to expected third-party URL</td>
+            <td>1. Navigate to the Login Page <br>2. Click on a third-party app button|User is redirected to expected URL</td>
+            <td>User is redirected to expected URL</td>
+            <td>Login_With_Facebook_Button_<br>Redirects_To_Expected_Url <br><br>  Login_With_Apple_Button_<br>Redirects_To_Expected_Url <br><br> Login_With_Google_Button_<br>Redirects_To_Expected_Url</td>
+          </tr>
+      <tr>
+    <td>Login Form</td>
+    <td>LOG-7</td>
+    <td>Given appropriate sign-up button,<br> When user clicks on the button,<br> Then the user is redirected to expected sign-up page</td>
+    <td>1. Navigate to the Login Page <br>2. Click on a sign-up button</td>
+    <td>User is redirected to expected URL</td>
+    <td>Signup_Button_Clicked_<br>Redirects_To_Expected_Page</td>
+</tr>
+<tr>
+    <td>Login Form</td>
+    <td>LOG-8</td>
+    <td>Given appropriate 'Forgot Pasword' link,<br> When user clicks on the link,<br> Then the user is redirected to expected password recovery URL</td>
+    <td>1. Navigate to the Login Page <br>2. Click on a 'Forgot Password' link</td>
+    <td>User is redirected to expected URL</td>
+    <td>Forgot_Password_Link_Button_<br>Redirects_To_Expected_Page</td>
+</tr>
+<tr>
+    <td>Login Form</td>
+    <td>LOG-9</td>
+    <td>Given appropriate Toggle Password visibility button,<br> When user clicks on the button,<br> Then the password credentials visibility changes back and forth</td>
+    <td>1. Navigate to the Login Page <br>2. Enter password <br> 3. Click on Toggle Password Visibilty button <br> 4. Verify that password has visible characters <br> 5. Click the Toggle Password Visibly button again. <br> 6. Verify that password characters are obscurred</td>
+    <td>Password characters visibility changes back and forth when clicking on a button</td>
+    <td>Password_Characters_Visibility_<br>Changes_On_Button_Click</td>
+</tr>
+</table>
+<table>
+  <th>Features</th>
+  <th>Test Case ID</th>
+  <th>Test Description</th>
+  <th>Test Steps</th>
+  <th>Expected Results</th>
+  <th>Test Case Method Coverage</th>
+  <tr>
+    <td>Register Form</td>
+    <td>REG-1</td>
+    <td>Given the application is running,<br> When the register form is visible,<br> Then all elements of the register form should be displayed</td>
+    <td>1. Navigate to the Register Page <br>2. Verify that register form elements are visible</td>
+    <td>Login Form and it's content are visible:<br> Fields:<br><sub>1. UserEmail input<br>2. Password Input<br></sub> Buttons:<br> <sub>1. Sign up Button<br> 2. Sign in with Facebook<br> 3. Sign in with Apple account<br> 4. Sign in with Google account<br> 5. Navigation sign-in button</sub><br> Labels:<br> <sub>1. User consent label</sub><br> CheckBox:<br> <sub>1. User consent CheckBox</td>
+    <td>RegisterForm_WebElements_<br>Are_Visible</td>
+</tr>
+<tr>
+    <td>Register Form</td>
+    <td>REG-2</td>
+    <td>Given the user has not entered any credentials,<br> When user attempts to register,<br> Then the user should not be able to do it and appropriate error message should be displayed</td>
+    <td>1. Navigate to Register Page <br>2. Click on a register button</td>
+    <td>Error message indicating invalid email and password is displayed</td>
+    <td>Register_With_Empty_<br>Credentials_Should_Fail</td>
+</tr>
+<tr>
+    <td>Register Form</td>
+    <td>REG-3</td>
+    <td>Given a valid user email credentials,<br> When user submits the form,<br> Then the user should not be able to register and appropriate error message should be displayed</td>
+    <td>1. Navigate to Register  Page <br>2. Enter User Email credentials <br>3. Click Register button</td>
+    <td>Appropriate error message for password input appears</td>
+    <td>Register_With_Only_<br>Valid_Email_Should_Fail</td>
+</tr>
+<tr>
+    <td>Register Form</td>
+    <td>REG-4</td>
+    <td>Given invalid user email credentials and password,<br> When user attempts to register,<br> Then the user should not be able to do it and an error message should be displayed</td>
+    <td>1. Navigate to Register Page <br>2. Enter invalid User Email credentials and password  <br>3. Click Register Button</td>
+    <td>Error message indicating invalid email is displayed</td>
+    <td>Register_With_Invalid_<br>Credentials_Should_Fail</td>
+</tr>
+<tr>
+    <td>Register Form</td>
+    <td>REG-5</td>
+    <td>Given valid user email credentials and password,<br> When user attempts to register,<br> Then the user is signed-in and redirected to the main page</td>
+    <td>1. Navigate to Register Page <br>2. Enter valid User Email credentials and password <br>3. Click on a Register Button</td>
+    <td>User is redirected to expected URL with already logged in account</td>
+    <td>Register_With_Valid_<br>Credentials_Redirects_To_Expected_Url</td>
+</tr>
+<tr>
+    <td>Register Form</td>
+    <td>REG-6</td>
+    <td>Given appropriate sign-in button,<br> When user clicks on the button,<br> Then the user is redirected to expected sign-in url</td>
+    <td>1. Navigate to Register Page <br> 2. Click on a Log-in button</td>
+    <td>User is redirected to expected URL</td>
+    <td>Login_With_Facebook_Button_<br>Redirects_To_Expected_Url <br><br> Login_With_Apple_Button_<br>Redirects_To_Expected_Url <br><br> Login_With_Google_Button_<br>Redirects_To_Expected_Url</td>
+</tr>
+<tr>
+    <td>Register Form</td>
+    <td>REG-7</td>
+    <td>Given appropriate Toggle Password visibility button,<br> When user clicks on the button,<br> Then the password credentials visibility changes back and forth</td>
+    <td>1. Navigate to the Register Page <br>2. Enter any password <br> 3. Click on Toggle Password Visibilty button <br> 4. Verify that password has visible characters <br> 5. Click the Toggle Password Visibly button again. <br> 6. Verify that password characters are obscurred</td>
+    <td>Password characters visibility changes back and forth when clicking on a button</td>
+    <td>Password_Characters_Visibility_<br>Changes_On_Button_Click</td>
+</tr>
+<tr>
+    <td>Register Form</td>
+    <td>REG-8</td>
+    <td>Given appropriate User Consent Checkbox button,<br> When user clicks on the button,<br> Then the checkbox selection state changes back and forth</td>
+    <td>1. Navigate to Register Page <br> 2. Click on a User Consent Checkbox <br> 3. Verify that checkbox is selected <br> 4. Click on User Consent Checkbox again <br> 5. Verify that checkbox is unselected</td>
+    <td>Checkbox selection state changes back and forth</td>
+    <td>User_Consent_CheckBox_<br>Is_Selected_On_Click</td>
+</tr>
+</table>
 
-|Features|Test Case ID|Test Description|Test Steps|Expected Results|Test Case Method Coverage
-|--------|:----------:|:--------:|:-----------------:|:--------------:|:-----------------------
-|Login Form| LOG-1| Given the application is running,<br> When the login form is visible,<br> Then all elements of the login form should be displayed|1. Navigate to Login Page <br>2. Verify that all login form elements are visible| **Login Form and it's content are visible:** <br>**Fields**: <sub><br>1. UserEmail input<br> 2.Password Input</sub><br> **Buttons**:<sub><br> 1. Login Button<br> 2. Sign in with Facebook <br> 3. Sign in with Apple account <br> 4. Sign in with Google account <br> 5. Navigation sign up button <br> 6. Toggle password visibility button</sub><br> **Links**:<sub><br> 1. Forgot Password|LoginForm_WebElements_AreVisible
-|Login Form|LOG-2|Given the user has not entered any credentials,<br> When the user attempts to sign in,<br> Then the user should not be able to sign in and an appropriate error message should be displayed|1. Navigate to Login Page <br>2. Click on a Login Button without filled input fields| Error message indicating invalid email and password is displayed|Login_With_Empty_Credentials_Should_Fail
-|Login Form|LOG-3|Given valid user email credentials, when the form is submitted without a password, then the login button should be disabled|1. Navigate to Login Page<br> 2. Enter User Email credentials <br> 3. Click Login Button|Button is disabled|Login_With_Only_Email_Should_Fail
-|Login Form|LOG-4|Given invalid user email credentials and password, <br>When user attempts to sign in, <br>Then the user should not be able to sign in and an error message should be displayed|1. Navigate to Login Page<br> 2. Enter invalid User Email credentials and password<br> 3. Click Login Button|Error message indicating invalid email is displayed|Login_With_Invalid_Credentials_Should_Fail
-|Login Form|LOG-5|Given valid user email credentials and password,<br> When user attempts to sign in,<br> Then the user should be able to sign in and be redirected to expected url|1. Navigate to Login Page <br> 2. Enter valid User Email and Password <Bbr> 3. Click Login Button| User is signed in and redirected to expected URL|Login_With_Valid_Credentials_Redirects_To_Expected_Url
-|Login Form|LOG-6|Given appropriate third-party app login button,<br> When user clicks on the button,<br> Then the user is redirected to expected third-party URL|1. Navigate to the Login Page <br>2. Click on a third-party app button|User is redirected to expected URL|Login_With_Facebook_Button_Redirects_To_Expected_Url <br> Login_With_Apple_Button_Redirects_To_Expected_Url <br> Login_With_Google_Button_Redirects_To_Expected_Url
-|Login Form|LOG-7|Given appropriate sign-up button,<br> When user clicks on the button,<br> Then the user is redirected to expected sign-up page|1. Navigate to the Login Page <br>2. Click on a sign-up button| User is redirected to expected URL| Signup_Button_Clicked_Redirects_To_Expected_Page
-|Login Form|LOG-8|Given appropriate 'Forgot Pasword' link,<br> When user clicks on the link,<br> Then the user is redirected to expected password recovery URL|1. Navigate to the Login Page <br>2. Click on a 'Forgot Password' link|User is redirected to expected URL|Forgot_Password_Link_Button_Redirects_To_Expected_Page
-|Login Form|LOG-9|Given appropriate Toggle Password visibility button,<br> When user clicks on the button,<br> Then the password credentials visibility changes back and forth|<sub>1. Navigate to the Login Page <br>2. Enter password <br> 3. Click on Toggle Password Visibilty button <br> 4. Verify that password has visible characters <br> 5. Click the Toggle Password Visibly button again. <br> 6. Verify that password characters are obscurred|Password characters visibility changes back and forth when clicking on a button|Password_Characters_Visibility_Changes_On_Button_Click
 
-|Features|Test Case ID|Test Description|Test Steps|Expected Results|Test Case Method Coverage
-|--------|:----------:|:--------:|:-----------------:|:--------------:|:-----------------------
-|Register Form|REG-1|Given the application is running,<br> When the register form is visible,<br> Then all elements of the register form should be displayed| 1. Navigate to the Register Page <br>2. Verify that register form elements are visible| **Login Form and it's content are visible:** <br> **Fields:** <br><sub>1. UserEmail input<br>2. Password Input<br></sub> **Buttons:** <br> <sub>1. Sign up Button<br> 2. Sign in with Facebook<br> 3. Sign in with Apple account<br> 4. Sign in with Google account<br> 5. Navigation sign-in button</sub><br> **Labels:** <br> <sub>1. User consent label</sub><br> **CheckBox:** <br> <sub>1. User consent CheckBox|RegisterForm_WebElements_Are_Visible
-|Register Form|REG-2|Given the user has not entered any credentials,<br> When user attempts to register,<br> Then the user should not be able to do it and appropriate error message should be displayed|1. Navigate to Register Page <br>2. Click on a register button|Error message indicating invalid email and password is displayed|Register_With_Empty_Credentials_Should_Fail  
-|Register Form|REG-3|Given a valid user email credentials,<br> When user submits the form,<br> Then the user should not be able to register and appropriate error message should be displayed|1. Navigate to Register  Page <br>2. Enter User Email credentials <br>3. Click Register button| Appropriate error message for password input appears| Register_With_Only_Valid_Email_Should_Fail
-|Register Form|REG-4|Given invalid user email credentials and password,<br> When user attempts to register,<br> Then the user should not be able to do it and an error message should be displayed|1. Navigate to Register Page <br>2. Enter invalid User Email credentials and password  <br>3. Click Register Button| Error message indicating invalid email is displayed|Register_With_Invalid_Credentials_Should_Fail
-|Register Form|REG-5|Given valid user email credentials and password,<br> When user attempts to register,<br> Then the user is signed-in and redirected to the main page|1. Navigate to Register Page <br>2. Enter valid User Email credentials and password <br>3. Click on a Register Button| User is redirected to expected URL with already logged in account|Register_With_Valid_Credentials_Redirects_To_Expected_Url
-|Register Form|REG-6|Given appropriate sign-in button,<br> When user clicks on the button,<br> Then the user is redirected to expected sign-in url|1. Navigate to Register Page <br> 2. Click on a Log-in button|User is redirected to expected URL|Login_With_Facebook_Button_Redirects_To_Expected_Url <br> Login_With_Apple_Button_Redirects_To_Expected_Url <br>Login_With_Google_Button_Redirects_To_Expected_Url
-|Register Form|REG-7|Given appropriate Toggle Password visibility button,<br> When user clicks on the button,<br> Then the password credentials visibility changes back and forth|<sub> 1. Navigate to the Register Page <br>2. Enter any password <br> 3. Click on Toggle Password Visibilty button <br> 4. Verify that password has visible characters <br> 5. Click the Toggle Password Visibly button again. <br> 6. Verify that password characters are obscurred |Password characters visibility changes back and forth when clicking on a button|Password_Characters_Visibility_Changes_On_Button_Click
-|Register Form|REG-8|Given appropriate User Consent Checkbox button,<br> When user clicks on the button,<br> Then the checkbox selection state changes back and forth|<sub>1. Navigate to Register Page <br> 2. Click on a User Consent Checkbox <br> 3. Verify that checkbox is selected <br> 4. Click on User Consent Checkbox again <br> 5. Verify that checkbox is unselected| Checkbox selection state changes back and forth|User_Consent_CheckBox_Is_Selected_On_Click
 
 
 
