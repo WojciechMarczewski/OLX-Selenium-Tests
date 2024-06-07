@@ -92,9 +92,7 @@ namespace OLX_Selenium_Tests.PageTests
             });
         }
         [Theory]
-        [InlineData("test!example.com", "pswd")]
-        [InlineData("@example.com", "longpassword")]
-        [InlineData("admin", "admin")]
+        [MemberData(nameof(GetInvalidRegisterDataFromExcelFile))]
         public void Register_With_Invalid_Credentials_Should_Fail(string userEmail, string password)
         {
             UITest(nameof(this.Register_With_Invalid_Credentials_Should_Fail), () =>
@@ -111,6 +109,7 @@ namespace OLX_Selenium_Tests.PageTests
                 });
             });
         }
+
         [Theory]
         [InlineData("letters-and-numbers123@example.com", "LuckyPants532")]
         [InlineData("with.longname@andevenverylongsurname.example.com", "IllBeBack21Terminator")]

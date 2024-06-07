@@ -37,6 +37,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Data\InvalidUserData.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Data\LoginData.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

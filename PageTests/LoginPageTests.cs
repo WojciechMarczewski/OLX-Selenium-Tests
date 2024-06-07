@@ -20,74 +20,91 @@ namespace OLX_Selenium_Tests.PageTests
         [InlineData("test")]
         [InlineData("--")]
         [InlineData("`")]
-        //[InlineData("Select id from users where userEmail=’username’ and password=’password’ or 1=1--+")]
+        [InlineData("test@")]
+        [InlineData("@test")]
+        [InlineData("test.com")]
+        [InlineData("test@.com")]
+        [InlineData("test@test")]
+        [InlineData("test@@test.com")]
+        [InlineData("test@test..com")]
+        [InlineData("test@.test.com")]
+        [InlineData(".test@test.com")]
+        [InlineData("test test@test.com")]
+        [InlineData("test@test test.com")]
+        [InlineData("test@test.com test")]
         public void UserEmailInput_InvalidDataEntered_DisplaysExpectedError(string userEmail)
         {
-            //Arrange
-            var loginPage = PageInit();
-            var loginForm = loginPage.LoginFormComponent;
-            var expectedErrorText = "To nie wygląda jak adres mailowy...";
-            //Act
-            loginForm.EmailInput.EnterText(userEmail);
-            //Assert
-            Assert.Multiple(() =>
+            UITest(nameof(this.UserEmailInput_InvalidDataEntered_DisplaysExpectedError), () =>
             {
-                Assert.True(loginForm.EmailInputErrorMessage.Displayed);
-                Assert.Equal(expectedErrorText, loginForm.EmailInputErrorMessage.Text);
+                //Arrange
+                var loginPage = PageInit();
+                var loginForm = loginPage.LoginFormComponent;
+                var expectedErrorText = "To nie wygląda jak adres mailowy...";
+                //Act
+                loginForm.EmailInput.EnterText(userEmail);
+                //Assert
+                Assert.Multiple(() =>
+                {
+                    Assert.True(loginForm.EmailInputErrorMessage.Displayed);
+                    Assert.Equal(expectedErrorText, loginForm.EmailInputErrorMessage.Text);
+                });
             });
         }
         [Theory]
-        [InlineData("test")]
         [InlineData("--")]
         [InlineData("`")]
-        // [InlineData("Select id from users where userEmail=’username’ and password=’password’ or 1=1--+")]
+        [InlineData("passw$rd")]
+        [InlineData("passw%rd")]
+        [InlineData("passw^rd")]
+        [InlineData("passw&rd")]
+        [InlineData("passw*rd")]
+        [InlineData("passw(rd")]
+        [InlineData("passw)rd")]
+        [InlineData("passw=rd")]
+        [InlineData("passw+rd")]
+        [InlineData("passw{rd")]
+        [InlineData("passw}rd")]
+        [InlineData("passw[rd")]
+        [InlineData("passw]rd")]
+        [InlineData("passw;rd")]
+        [InlineData("passw:rd")]
+        [InlineData("passw'rd")]
+        [InlineData("passw\"rd")]
         public void UserPasswordInput_InvalidDataEntered_DisplaysExpectedError(string userPassword)
         {
-            //Arrange
-            var loginPage = PageInit();
-            var loginForm = loginPage.LoginFormComponent;
-            var expectedErrorText = "Masz pewność co do hasła? Jest zbyt krótkie";
-            //Act
-            loginForm.EmailInput.EnterText(userPassword);
-            //Assert
-            Assert.Multiple(() =>
+            UITest(nameof(this.UserPasswordInput_InvalidDataEntered_DisplaysExpectedError), () =>
             {
-                Assert.True(loginForm.PasswordInputErrorMessage.Displayed);
-                Assert.Equal(expectedErrorText, loginForm.PasswordInputErrorMessage.Text);
+                //Arrange
+                var loginPage = PageInit();
+                var loginForm = loginPage.LoginFormComponent;
+                var expectedErrorText = "Masz pewność co do hasła? Jest zbyt krótkie";
+                //Act
+                loginForm.EmailInput.EnterText(userPassword);
+                //Assert
+                Assert.Multiple(() =>
+                {
+                    Assert.True(loginForm.PasswordInputErrorMessage.Displayed);
+                    Assert.Equal(expectedErrorText, loginForm.PasswordInputErrorMessage.Text);
+                });
             });
         }
         [Theory]
         [MemberData(nameof(GetLoginDataFromExcelFile))]
         public void Login_With_Valid_Credentials_Redirects_To_Expected_Url(string userEmail, string password)
         {
-            // Lack of access to testing features on the site, commented 2 lines to prevent fails
+            //Note: Data used for login is not valid, it only serves as a example, so tests will fail
             UITest(nameof(this.Login_With_Valid_Credentials_Redirects_To_Expected_Url), () =>
             {
                 //Arrange
                 var loginPage = PageInit();
                 //Act 
-                //loginPage.Login(userEmail, password);
+                loginPage.Login(userEmail, password);
                 DriverWaitForRedirection();
                 //Assert
-                // Assert.Equal(baseUrl, driver?.Url);
+                Assert.Equal(baseUrl, driver?.Url);
             });
         }
-        public static IEnumerable<object[]> GetLoginDataFromExcelFile()
-        {
-            string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data/LoginData.xlsx");
-            var arrayOfLists = ExcelReader.ReadExcelFile(filePath);
-            List<object[]> objects = new List<object[]>();
-            int firstColumn = 0;
-            int secondColumn = 1;
-            for (int rowNumber = 0; rowNumber < arrayOfLists[firstColumn].Count; rowNumber++)
-            {
-                var userEmail = arrayOfLists[firstColumn][rowNumber];
-                var password = arrayOfLists[secondColumn][rowNumber];
-                objects.Add(new object[] { userEmail, password });
-            }
-            return objects;
 
-        }
         [Fact]
         public void LoginForm_WebElements_AreVisible()
         {

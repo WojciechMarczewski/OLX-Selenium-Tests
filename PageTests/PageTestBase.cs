@@ -60,5 +60,36 @@ namespace OLX_Selenium_Tests.PageTests
                 throw;
             }
         }
+        public static IEnumerable<object[]> GetInvalidRegisterDataFromExcelFile()
+        {
+            string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data/InvalidUserData.xlsx");
+            var arrayOfLists = ExcelReader.ReadExcelFile(filePath);
+            List<object[]> objects = new List<object[]>();
+            int firstColumn = 0;
+            int secondColumn = 1;
+            for (int rowNumber = 0; rowNumber < arrayOfLists[firstColumn].Count; rowNumber++)
+            {
+                var userEmail = arrayOfLists[firstColumn][rowNumber];
+                var password = arrayOfLists[secondColumn][rowNumber];
+                objects.Add(new object[] { userEmail, password });
+            }
+            return objects;
+        }
+        public static IEnumerable<object[]> GetLoginDataFromExcelFile()
+        {
+            string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data/LoginData.xlsx");
+            var arrayOfLists = ExcelReader.ReadExcelFile(filePath);
+            List<object[]> objects = new List<object[]>();
+            int firstColumn = 0;
+            int secondColumn = 1;
+            for (int rowNumber = 0; rowNumber < arrayOfLists[firstColumn].Count; rowNumber++)
+            {
+                var userEmail = arrayOfLists[firstColumn][rowNumber];
+                var password = arrayOfLists[secondColumn][rowNumber];
+                objects.Add(new object[] { userEmail, password });
+            }
+            return objects;
+
+        }
     }
 }
