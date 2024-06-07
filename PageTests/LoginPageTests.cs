@@ -146,7 +146,6 @@ namespace OLX_Selenium_Tests.PageTests
                 //Act
                 loginPage.LoginFormComponent.EmailInput.EnterText(userEmail);
                 loginPage.LoginForm.Submit();
-                Task.Delay(3000);
                 //Assert
                 Assert.Multiple(() =>
                 {
