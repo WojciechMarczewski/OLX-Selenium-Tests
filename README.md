@@ -35,6 +35,7 @@ Example: <a href="https://github.com/WojciechMarczewski/OLX-Selenium-Tests/blob/
 ### On Test Failure Screenshots
 Test logic inside test methods is wrapped by another method implemented in PageTestBase.cs - <a href="https://github.com/WojciechMarczewski/OLX-Selenium-Tests/blob/b3d08487320996b7f185cc5a0ab1bb8bb6b5d73f/PageTests/PageTestBase.cs#L51">UITest<a/>, which catches test failures and saves captured screenshots in the app directory.
 
+Example of use: <a href="https://github.com/WojciechMarczewski/OLX-Selenium-Tests/blob/b3d08487320996b7f185cc5a0ab1bb8bb6b5d73f/PageTests/LoginPageTests.cs#L92">UITest(nameof(this.LoginForm_WebElements_AreVisible), () =>...</a>
 <br>
 <br>
 
